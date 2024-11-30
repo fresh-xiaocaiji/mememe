@@ -1,0 +1,74 @@
+page2 {
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  display: flex;
+  scroll-snap-align: start;
+  font-family: "Yeseva One";
+}
+.box1 {
+  z-index: 1;
+  display: flex;
+  width: 43vw;
+  height: 200px;
+  background-color: aliceblue;
+  margin: 10px;
+}
+/* #a {
+  border-radius: 50px;
+  background: rgb(136, 204, 61);
+  background: linear-gradient(
+    110deg,
+    rgba(136, 204, 61, 1) 0%,
+    rgba(72, 197, 189, 1) 50%,
+    rgba(136, 204, 61, 1) 100%
+  );
+}
+#b {
+  border-radius: 50px;
+  background: rgb(136, 204, 61);
+  background: linear-gradient(
+    110deg,
+    rgba(136, 204, 61, 1) 0%,
+    rgba(72, 197, 189, 1) 50%,
+    rgba(136, 204, 61, 1) 100%
+  );
+} */
+.box1 {
+  border-radius: 50px;
+  background: rgb(136, 204, 61);
+  background: linear-gradient(
+    110deg,
+    rgba(136, 204, 61, 1) 0%,
+    rgba(72, 197, 189, 1) 50%,
+    rgba(136, 204, 61, 1) 100%
+  );
+}
+.hidden {
+  opacity: 0;
+  filter: blur(10px);
+  transition: all 1s;
+  transform: translateX(-100%);
+}
+
+.visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(-10%);
+}
+
+.hidden2 {
+  opacity: 0;
+  filter: blur(10px);
+  transition: all 1s;
+  transform: translateX(100%);
+}
+
+.visible2 {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(30%);
+}

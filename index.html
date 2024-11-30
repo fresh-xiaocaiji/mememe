@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>起始页</title>
+    <style>
+      @import url(navi2.css);
+      @import url(index.css);
+      @import url("https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap");
+      @import url(content.css);
+      * {
+        box-sizing: border-box;
+        margin: auto;
+      }
+
+      body {
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        font-family: "Yeseva One";
+      }
+      start {
+        z-index: 0;
+
+        height: 100vh;
+        width: 100vw;
+
+        flex-direction: column;
+        overflow: scroll;
+        font-family: "Yeseva One";
+      }
+      .container {
+        /* display: flex; */
+        width: 100vw;
+        height: 100vh;
+
+        overflow-y: scroll;
+        overflow-x: hidden;
+        justify-content: center;
+        align-items: center;
+        scroll-snap-type: y mandatory;
+        background-color: #fff;
+      }
+      page {
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        scroll-snap-align: start;
+        font-family: "Yeseva One";
+      }
+      
+      /* 背景图 */
+
+      video {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        z-index: -999;
+      }
+
+      .shell {
+        position: relative;
+        max-width: 100vh;
+        aspect-ratio: 1/1;
+        display: flex;
+        border-radius: 50%;
+        overflow: hidden;
+        text-align: center;
+        filter: drop-shadow(-30px 30px 10px #024b4a);
+      }
+
+      .text-wrapper {
+        font-size: 80px;
+      }
+      span.wave {
+        background: rgb(113, 193, 49);
+        background: linear-gradient(
+          110deg,
+          rgba(113, 193, 49, 1) 0%,
+          rgba(68, 187, 157, 0.5228592902004552) 50%,
+          rgba(113, 193, 49, 1) 100%
+        );
+        /* background: -50% 0%/200% 100%
+          linear-gradient(90deg, #606c2515, #334bff, #00170e1e); */
+        color: transparent;
+        background-clip: text;
+        animation: flow 4s linear infinite;
+        padding: 0 45px;
+      }
+      .text-author {
+        font-size: 58.2px;
+        text-align: right;
+      }
+
+      .box {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+      }
+
+      .box:nth-of-type(1) {
+        height: 35%;
+        opacity: 0.6;
+      }
+
+      .box:nth-of-type(2) {
+        height: 67%;
+        opacity: 0.5;
+      }
+
+      .box:nth-of-type(3) {
+        height: 93%;
+        opacity: 0.4;
+      }
+
+      .wave {
+        /* 创建两个径向渐变蒙版，模拟波浪的上下部分 */
+        -webkit-mask: radial-gradient(
+            33.9px at 50% calc(100% - (19.6px + 27.6px)),
+            #fff 99%,
+            #ffffff00 101%
+          ),
+          radial-gradient(
+              33.9px at 50% calc(100% + 27.6px),
+              #ffffff00 99%,
+              #fff 101%
+            )
+            repeat-x;
+        /* 设置蒙版的大小，使波浪在水平上重复 */
+        -webkit-mask-size: calc(4 * 19.6px) 100%;
+        /* 设置蒙版的初始位置，调整波浪的位置 */
+        -webkit-mask-position: calc(50% - 2 * 19.6px) 0, 50% calc(100% - 19.6px);
+        animation: flow 5s linear infinite;
+      }
+      /* mask: radial-gradient(46.6px);
+      } */
+      @keyframes flow {
+        100% {
+          /* 设置动画结束时的蒙版位置，使波浪看起来在移动 */
+          -webkit-mask-position: calc(50% - 6 * 19.6px) 0,
+            calc(50% - 4 * 19.6px) calc(200% - 19.6px);
+        }
+      }
+
+      /* 导航栏样式 */
+
+      .navi {
+        height: 70px;
+        width: 80%;
+        right: 0;
+        top: 0;
+        backdrop-filter: blur(50px);
+        z-index: 999;
+      }
+
+      /* 侧边导航栏 */
+    
+    </style>
+  </head>
+
+  <body>
+    <!-- 顶部导航栏 -->
+    <div class="nav navi">
+      <ul>
+        <li id="open"><a href="#" >HTML</a></li>
+        <li><a href="jump.html">button2</a></li>
+        <li><a href="jump.html">button3</a></li>
+        <li><a href="jump.html">button4</a></li>
+        <li><a href="jump.html">button5</a></li>
+        <li><a href="jump.html">button6</a></li>
+        <div class="nav-box"></div>
+      </ul>
+    </div>
+    <!-- 中心大标题 -->
+    <start class="container">
+      <page id="page1">
+        <div class="shell">
+          <div class="box wave"></div>
+          <div class="box wave"></div>
+          <div class="box wave"></div>
+          <div class="text-wrapper">
+            <div class="text-content">
+              <span class="wave">Dream big,</span>
+              <br />
+              <span class="wave">Work hard.</span>
+            </div>
+            <div class="text-author">
+              <span class="wave">--廖乙龙</span>
+            </div>
+          </div>
+        </div>
+        <video autoplay loop muted >
+          <source src="Anime Koi-Pond.mp4" />
+        </video>
+      </page>
+      <!-- 固定侧边栏 -->
+      <div class="navibox" style="z-index: 1">
+        
+          <a href="#page1" class="abox" style="margin: 0;height: 20%;"><div style="justify-content: center;align-items: center;object-fit: fill;margin:0;">  Start  </div></a>
+          <a href="#page2" class="abox" style="margin: 0;height: 20%;"><div style="justify-content: center;align-items: center;object-fit: fill;margin:0;">  Analysis  </div></a>
+          <a href="#page3" class="abox" style="margin: 0;height: 20%;"><div style="justify-content: center;align-items: center;object-fit: fill;margin:0;">  Advantages  </div></a>
+          <a href="#" class="abox" style="margin: 0;height: 20%;"><div style="justify-content: center;align-items: center;object-fit: fill;margin:0;">  Wishes  </div></a>
+          <a href="#" class="abox" style="margin: 0;height: 20%;"><div style="justify-content: center;align-items: center;object-fit: fill;margin:0;">  Thanks  </div></a>
+        </ul>
+      </div>
+      <!-- 页面元素 -->
+      <page2 id="page2">
+        <div class="box1 hidden" id="a"></div>
+      <div class="box1 hidden2" id="b"></div>
+      <div class="box1 hidden" id="c"></div></page2>
+      <page2 id="page3"> <div style="font-size: 30vh;font-weight: 700;display: flex;align-items: center;justify-content: center;width: 50vh;aspect-ratio: 1/1;text-align: center;color: rgb(70, 100, 180);">Thanks</div></page2>
+    </start>
+    <script src="click.js">
+      
+
+
+      // var ani1 = document.querySelector('.box1')
+//       ani1.style.width='800px'
+//  ani1.style.backgroundColor = "black"
+// ani1.className = 'xxxx'
+// ani1.addEventListener('click', function(){
+//   ani1.style.backgroundColor = "red";
+  
+// })
+
+
+
+
+    </script>  
+    <script>var i=1;
+      var open = document.querySelector("#open")
+      open.addEventListener('click', function(){
+        
+        if(i>2)
+        {i=1;}
+        if(i%2===1)
+        {
+        open.style.height= '210px';
+        
+        open.innerHTML='<a href="#" id="opa">HTML</a><a href="#" id="opa">CSS</a><a href="#" id="opa">JS</a>';
+         }
+        else{
+          open.style.height= '70px';
+          open.innerHTML='<a href="#">HTML</a>';
+        }
+        i++;
+
+      })
+      var ani1=document.querySelector(".flag");
+      intersectionObserver.observe(ani1,function(){
+        ani1.classList.add("active");
+      });</script>
+
+  </body>
+</html>
